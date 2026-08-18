@@ -34,18 +34,18 @@ export default function BrandingCard() {
   if (isLoading) return null;
 
   return (
-    <div className="mx-4 mt-4 bg-white rounded-2xl shadow-sm p-4">
+    <div className="mx-4 mt-4 bg-ink-800 rounded-2xl shadow-sm p-4">
       {!editing ? (
         <div className="flex items-center justify-between">
           <div>
-            <p className="text-xs text-plum-400 uppercase tracking-wide">Studio</p>
-            <p className="font-display text-xl font-semibold">
-              {settings.studio_name} <span className="text-plum-400 text-base">({settings.currency_symbol})</span>
+            <p className="text-xs text-ink-400 uppercase tracking-wide">Studio</p>
+            <p className="font-display text-xl font-semibold text-gold-500">
+              {settings.studio_name} <span className="text-ink-400 text-base">({settings.currency_symbol})</span>
             </p>
           </div>
           <button
             onClick={startEdit}
-            className="min-h-[44px] px-4 rounded-xl bg-plum-50 text-plum-700 font-medium text-sm"
+            className="min-h-[44px] px-4 rounded-xl bg-ink-700 text-ink-100 font-medium text-sm"
           >
             Edit
           </button>
@@ -59,7 +59,7 @@ export default function BrandingCard() {
                 type="text"
                 value={studioName}
                 onChange={(e) => setStudioName(e.target.value)}
-                className="mt-1 w-full min-h-[44px] rounded-xl border border-plum-100 px-3"
+                className="mt-1 w-full min-h-[44px] rounded-xl border border-ink-600 bg-ink-900 text-ink-100 px-3"
               />
             </label>
             <label className="w-24 text-sm">
@@ -68,22 +68,22 @@ export default function BrandingCard() {
                 type="text"
                 value={currencySymbol}
                 onChange={(e) => setCurrencySymbol(e.target.value)}
-                className="mt-1 w-full min-h-[44px] rounded-xl border border-plum-100 px-3"
+                className="mt-1 w-full min-h-[44px] rounded-xl border border-ink-600 bg-ink-900 text-ink-100 px-3"
               />
             </label>
           </div>
-          {error && <p className="text-coral-600 text-sm mt-2">{error}</p>}
+          {error && <p className="text-danger-500 text-sm mt-2">{error}</p>}
           <div className="flex gap-2 mt-3">
             <button
               onClick={save}
               disabled={updateSettings.isPending}
-              className="flex-1 min-h-[44px] rounded-xl bg-plum-800 text-white font-medium"
+              className="flex-1 min-h-[44px] rounded-xl bg-emerald-500 text-ink-950 font-medium"
             >
               Save
             </button>
             <button
               onClick={() => setEditing(false)}
-              className="flex-1 min-h-[44px] rounded-xl bg-plum-50 text-plum-700 font-medium"
+              className="flex-1 min-h-[44px] rounded-xl bg-ink-700 text-ink-100 font-medium"
             >
               Cancel
             </button>

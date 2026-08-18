@@ -6,12 +6,12 @@ export default function AttendanceCard({ student, present, onToggle }) {
       onClick={() => onToggle(student.id, !present)}
       className={`relative flex flex-col items-center justify-center gap-2 rounded-2xl p-3 min-h-[104px] border-2 transition-colors ${
         present
-          ? "bg-coral-500 border-coral-500 text-white"
-          : "bg-white border-plum-100 text-plum-800"
+          ? "bg-emerald-500 border-emerald-500 text-ink-950"
+          : "bg-ink-800 border-ink-600 text-ink-100"
       }`}
     >
       {present && (
-        <span className="absolute top-1.5 right-1.5 w-5 h-5 rounded-full bg-white text-coral-600 text-xs flex items-center justify-center font-bold">
+        <span className="absolute top-1.5 right-1.5 w-5 h-5 rounded-full bg-ink-950 text-emerald-500 text-xs flex items-center justify-center font-bold">
           ✓
         </span>
       )}

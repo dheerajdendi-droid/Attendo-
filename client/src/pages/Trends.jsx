@@ -7,12 +7,12 @@ import { formatMonth, currentMonth, shiftMonth } from "../lib/date.js";
 
 function buildMetrics(currencySymbol) {
   return {
-    students: { label: "Students", key: "studentCount", color: "#3D1F3E", format: (v) => String(v) },
-    attendance: { label: "Attendance", key: "sessions", color: "#FF7A45", format: (v) => String(v) },
+    students: { label: "Students", key: "studentCount", color: "#D4AF37", format: (v) => String(v) },
+    attendance: { label: "Attendance", key: "sessions", color: "#2FA36B", format: (v) => String(v) },
     payments: {
       label: "Payments",
       key: "billed",
-      color: "#F4A63D",
+      color: "#E3C158",
       format: (v) => `${currencySymbol}${v.toFixed(0)}`,
     },
     outgoings: {
@@ -56,7 +56,7 @@ export default function Trends() {
     <div className="pb-6">
       <div className="grid grid-cols-2 gap-3 mx-4 mt-4">
         {summaryLoading ? (
-          <p className="col-span-2 text-plum-400">Loading…</p>
+          <p className="col-span-2 text-ink-400">Loading…</p>
         ) : (
           <>
             <StatCard label="Active students" value={summary.activeStudents} />
@@ -68,13 +68,13 @@ export default function Trends() {
         )}
       </div>
 
-      <div className="mx-4 mt-6 flex bg-plum-50 rounded-xl p-1">
+      <div className="mx-4 mt-6 flex bg-ink-700 rounded-xl p-1">
         {Object.entries(METRICS).map(([key, m]) => (
           <button
             key={key}
             onClick={() => setMetric(key)}
             className={`flex-1 min-h-[40px] rounded-lg text-sm font-semibold transition-colors ${
-              metric === key ? "bg-white shadow-sm text-plum-800" : "text-plum-500"
+              metric === key ? "bg-ink-800 shadow-sm text-gold-500" : "text-ink-400"
             }`}
           >
             {m.label}
@@ -86,7 +86,7 @@ export default function Trends() {
         <div className="flex items-center justify-between mx-4 mt-3">
           <button
             onClick={() => setMonth(shiftMonth(month, -1))}
-            className="min-w-[40px] min-h-[40px] rounded-full bg-white shadow-sm text-plum-700"
+            className="min-w-[40px] min-h-[40px] rounded-full bg-ink-800 shadow-sm text-ink-100"
             aria-label="Previous month"
           >
             ←
@@ -94,7 +94,7 @@ export default function Trends() {
           <p className="font-medium text-sm">{formatMonth(month)}</p>
           <button
             onClick={() => setMonth(shiftMonth(month, 1))}
-            className="min-w-[40px] min-h-[40px] rounded-full bg-white shadow-sm text-plum-700"
+            className="min-w-[40px] min-h-[40px] rounded-full bg-ink-800 shadow-sm text-ink-100"
             aria-label="Next month"
           >
             →
@@ -102,20 +102,21 @@ export default function Trends() {
         </div>
       )}
 
-      <div className="mx-4 mt-4 bg-white rounded-2xl shadow-sm p-3" style={{ height: 260 }}>
+      <div className="mx-4 mt-4 bg-ink-800 rounded-2xl shadow-sm p-3" style={{ height: 260 }}>
         {classesLoading ? (
-          <p className="text-plum-400 p-3">Loading…</p>
+          <p className="text-ink-400 p-3">Loading…</p>
         ) : chartData.length === 0 ? (
-          <p className="text-plum-400 p-3">No classes yet.</p>
+          <p className="text-ink-400 p-3">No classes yet.</p>
         ) : (
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={chartData} margin={{ top: 8, right: 8, left: -20, bottom: 0 }}>
-              <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#F5EBDD" />
-              <XAxis dataKey="name" tick={{ fontSize: 11, fill: "#8A4A73" }} interval={0} />
-              <YAxis tick={{ fontSize: 11, fill: "#8A4A73" }} allowDecimals={false} />
+              <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#332F2A" />
+              <XAxis dataKey="name" tick={{ fontSize: 11, fill: "#8A7F68" }} interval={0} />
+              <YAxis tick={{ fontSize: 11, fill: "#8A7F68" }} allowDecimals={false} />
               <Tooltip
                 formatter={(value) => metricConfig.format(value)}
-                contentStyle={{ borderRadius: 12, border: "1px solid #F5EBDD" }}
+                contentStyle={{ borderRadius: 12, border: "1px solid #332F2A", backgroundColor: "#1A1A1A", color: "#EDE4D3" }}
+                labelStyle={{ color: "#EDE4D3" }}
               />
               <Bar dataKey={metricConfig.key} fill={metricConfig.color} radius={[6, 6, 0, 0]} />
             </BarChart>
@@ -124,7 +125,7 @@ export default function Trends() {
       </div>
 
       {insight && (
-        <p className="mx-4 mt-4 text-sm text-plum-600 bg-marigold-500/10 rounded-xl p-3">{insight}</p>
+        <p className="mx-4 mt-4 text-sm text-ink-100 bg-gold-500/10 rounded-xl p-3">{insight}</p>
       )}
     </div>
   );

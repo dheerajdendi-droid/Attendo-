@@ -1,4 +1,4 @@
-const PALETTE = ["bg-coral-500", "bg-marigold-500", "bg-plum-400", "bg-plum-600"];
+const PALETTE = ["bg-emerald-500", "bg-gold-500", "bg-emerald-600", "bg-gold-600"];
 
 function initials(name) {
   return name
@@ -19,7 +19,7 @@ export default function Avatar({ name, size = "md" }) {
   const sizeClass = size === "lg" ? "w-14 h-14 text-lg" : "w-11 h-11 text-sm";
   return (
     <div
-      className={`${sizeClass} ${colorFor(name)} rounded-full flex items-center justify-center text-white font-semibold shrink-0`}
+      className={`${sizeClass} ${colorFor(name)} rounded-full flex items-center justify-center text-ink-950 font-semibold shrink-0`}
     >
       {initials(name)}
     </div>

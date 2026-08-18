@@ -4,28 +4,34 @@ export default {
   theme: {
     extend: {
       colors: {
-        plum: {
-          50: "#F5EEF3",
-          100: "#E5D0DE",
-          400: "#8A4A73",
-          600: "#5C2A4E",
-          700: "#4A2140",
-          800: "#3D1F3E",
-          900: "#2C1530",
+        // Black-and-gold identity: ink (near-black backgrounds/surfaces/body
+        // text), gold (brand/headings/key monetary values), emerald
+        // (positive/active/CTA states), danger (errors/warnings).
+        ink: {
+          950: "#050505",
+          900: "#0D0D0D",
+          800: "#1A1A1A",
+          700: "#242220",
+          600: "#332F2A",
+          400: "#8A7F68",
+          300: "#A89C82",
+          200: "#C9BFA8",
+          100: "#EDE4D3",
         },
-        coral: {
-          400: "#FF9466",
-          500: "#FF7A45",
-          600: "#F4622C",
+        gold: {
+          400: "#E3C158",
+          500: "#D4AF37",
+          600: "#B8952A",
         },
-        marigold: {
-          400: "#F7BB5C",
-          500: "#F4A63D",
-          600: "#E08F22",
+        emerald: {
+          400: "#3DBE82",
+          500: "#2FA36B",
+          600: "#24875A",
         },
-        cream: {
-          50: "#FBF6F0",
-          100: "#F5EBDD",
+        danger: {
+          400: "#F07860",
+          500: "#E0533D",
+          600: "#C43F2B",
         },
       },
       fontFamily: {

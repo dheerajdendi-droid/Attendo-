@@ -150,23 +150,23 @@ export default function Lock({ pinSet, studioName }) {
   const showSocial = import.meta.env.VITE_GOOGLE_CLIENT_ID || import.meta.env.VITE_FACEBOOK_APP_ID;
 
   return (
-    <div className="min-h-screen bg-plum-900 flex flex-col items-center justify-center px-6 text-cream-50">
+    <div className="min-h-screen bg-ink-900 flex flex-col items-center justify-center px-6 text-ink-100">
       <div className="text-center mb-10">
-        <p className="font-display text-3xl font-semibold text-marigold-400">{studioName || "Attendo"}</p>
+        <p className="font-display text-3xl font-semibold text-gold-500">{studioName || "Attendo"}</p>
         <h1 className="mt-3 text-lg font-medium">{heading}</h1>
-        <p className="text-sm text-plum-100/70 mt-1">{subheading}</p>
+        <p className="text-sm text-ink-200/70 mt-1">{subheading}</p>
       </div>
       <div className={shake ? "animate-[shake_0.4s]" : ""}>
         <PinPad value={activeValue} maxLength={PIN_LENGTH} onChange={handleChange} disabled={busy} />
       </div>
-      <p className="mt-6 h-5 text-coral-500 text-sm font-medium">{error}</p>
+      <p className="mt-6 h-5 text-danger-500 text-sm font-medium">{error}</p>
 
       {showSocial && (
         <div className="mt-4 flex flex-col items-center gap-3">
           <div className="flex items-center gap-2 w-full max-w-[260px]">
-            <div className="flex-1 h-px bg-plum-100/20" />
-            <span className="text-xs text-plum-100/50">or</span>
-            <div className="flex-1 h-px bg-plum-100/20" />
+            <div className="flex-1 h-px bg-ink-200/20" />
+            <span className="text-xs text-ink-200/50">or</span>
+            <div className="flex-1 h-px bg-ink-200/20" />
           </div>
           {import.meta.env.VITE_GOOGLE_CLIENT_ID && <div ref={googleButtonRef} />}
           {import.meta.env.VITE_FACEBOOK_APP_ID && (

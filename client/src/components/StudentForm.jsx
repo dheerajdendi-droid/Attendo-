@@ -30,13 +30,13 @@ export default function StudentForm({ initial, onSave, onCancel, saving }) {
   if (tiersLoading) return null;
 
   return (
-    <form onSubmit={submit} className="bg-white rounded-xl border border-dashed border-plum-100 p-3 space-y-2">
+    <form onSubmit={submit} className="bg-ink-800 rounded-xl border border-dashed border-ink-600 p-3 space-y-2">
       <input
         type="text"
         placeholder="Student name"
         value={name}
         onChange={(e) => setName(e.target.value)}
-        className="w-full min-h-[44px] rounded-xl border border-plum-100 px-3"
+        className="w-full min-h-[44px] rounded-xl border border-ink-600 bg-ink-900 text-ink-100 px-3"
         autoFocus
       />
       <input
@@ -44,7 +44,7 @@ export default function StudentForm({ initial, onSave, onCancel, saving }) {
         placeholder="Parent WhatsApp number (optional)"
         value={phone}
         onChange={(e) => setPhone(e.target.value)}
-        className="w-full min-h-[44px] rounded-xl border border-plum-100 px-3"
+        className="w-full min-h-[44px] rounded-xl border border-ink-600 bg-ink-900 text-ink-100 px-3"
       />
       <div className="flex gap-2 flex-wrap">
         {(tiers || []).map((t) => (
@@ -54,27 +54,27 @@ export default function StudentForm({ initial, onSave, onCancel, saving }) {
             onClick={() => setTierId(t.id)}
             className={`flex-1 min-h-[44px] rounded-xl font-medium border ${
               tierId === t.id
-                ? "bg-coral-500 border-coral-500 text-white"
-                : "bg-white border-plum-100 text-plum-700"
+                ? "bg-emerald-500 border-emerald-500 text-ink-950"
+                : "bg-ink-900 border-ink-600 text-ink-100"
             }`}
           >
             {t.name}
           </button>
         ))}
       </div>
-      {error && <p className="text-coral-600 text-sm">{error}</p>}
+      {error && <p className="text-danger-500 text-sm">{error}</p>}
       <div className="flex gap-2">
         <button
           type="submit"
           disabled={saving}
-          className="flex-1 min-h-[44px] rounded-xl bg-plum-800 text-white font-medium"
+          className="flex-1 min-h-[44px] rounded-xl bg-emerald-500 text-ink-950 font-medium"
         >
           {initial ? "Save" : "Add student"}
         </button>
         <button
           type="button"
           onClick={onCancel}
-          className="flex-1 min-h-[44px] rounded-xl bg-white border border-plum-100 text-plum-700 font-medium"
+          className="flex-1 min-h-[44px] rounded-xl bg-ink-900 border border-ink-600 text-ink-100 font-medium"
         >
           Cancel
         </button>

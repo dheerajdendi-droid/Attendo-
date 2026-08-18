@@ -10,7 +10,7 @@ export default function Money() {
 
   return (
     <div className="pb-6">
-      <div className="mx-4 mt-3 flex bg-plum-50 rounded-xl p-1">
+      <div className="mx-4 mt-3 flex bg-ink-700 rounded-xl p-1">
         {[
           { key: "month", label: "By month" },
           { key: "outstanding", label: "Outstanding" },
@@ -19,7 +19,7 @@ export default function Money() {
             key={tab.key}
             onClick={() => setView(tab.key)}
             className={`flex-1 min-h-[40px] rounded-lg text-sm font-semibold transition-colors ${
-              view === tab.key ? "bg-white shadow-sm text-plum-800" : "text-plum-500"
+              view === tab.key ? "bg-ink-800 shadow-sm text-gold-500" : "text-ink-400"
             }`}
           >
             {tab.label}
@@ -45,7 +45,7 @@ function MonthView({ month, setMonth }) {
       <div className="flex items-center justify-between mx-4 mt-4">
         <button
           onClick={() => setMonth(shiftMonth(month, -1))}
-          className="min-w-[44px] min-h-[44px] rounded-full bg-white shadow-sm text-plum-700 text-lg"
+          className="min-w-[44px] min-h-[44px] rounded-full bg-ink-800 shadow-sm text-ink-100 text-lg"
           aria-label="Previous month"
         >
           ←
@@ -53,7 +53,7 @@ function MonthView({ month, setMonth }) {
         <p className="font-display text-lg font-semibold">{formatMonth(month)}</p>
         <button
           onClick={() => setMonth(shiftMonth(month, 1))}
-          className="min-w-[44px] min-h-[44px] rounded-full bg-white shadow-sm text-plum-700 text-lg"
+          className="min-w-[44px] min-h-[44px] rounded-full bg-ink-800 shadow-sm text-ink-100 text-lg"
           aria-label="Next month"
         >
           →
@@ -61,9 +61,9 @@ function MonthView({ month, setMonth }) {
       </div>
 
       {isLoading ? (
-        <p className="p-4 text-plum-400">Loading…</p>
+        <p className="p-4 text-ink-400">Loading…</p>
       ) : !groups || groups.length === 0 ? (
-        <p className="mx-4 mt-6 text-plum-400 text-sm">No sessions recorded for this month.</p>
+        <p className="mx-4 mt-6 text-ink-400 text-sm">No sessions recorded for this month.</p>
       ) : (
         <div className="space-y-5 mt-4">
           {groups.map((g) => (
@@ -92,10 +92,10 @@ function OutstandingView() {
   const { data: rows, isLoading } = useBillingOutstanding();
   const togglePayment = useTogglePayment();
 
-  if (isLoading) return <p className="p-4 text-plum-400">Loading…</p>;
+  if (isLoading) return <p className="p-4 text-ink-400">Loading…</p>;
 
   if (!rows || rows.length === 0) {
-    return <p className="mx-4 mt-6 text-plum-400 text-sm">Nothing outstanding — all caught up!</p>;
+    return <p className="mx-4 mt-6 text-ink-400 text-sm">Nothing outstanding — all caught up!</p>;
   }
 
   return (

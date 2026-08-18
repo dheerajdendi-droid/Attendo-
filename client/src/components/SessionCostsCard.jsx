@@ -43,40 +43,40 @@ export default function SessionCostsCard({ classId, date }) {
   if (!classId || !date) return null;
 
   return (
-    <div className="mx-4 mt-5 bg-white rounded-2xl border border-plum-100">
+    <div className="mx-4 mt-5 bg-ink-800 rounded-2xl border border-ink-600">
       <button
         onClick={() => setExpanded((v) => !v)}
         className="w-full flex items-center justify-between px-4 py-3 min-h-[48px] text-left"
       >
-        <span className="text-sm font-medium text-plum-500">
+        <span className="text-sm font-medium text-ink-100">
           Session costs
           {entries && entries.length > 0 && (
-            <span className="text-plum-400">
+            <span className="text-ink-400">
               {" "}
               · {currencySymbol}{total.toFixed(2)} · {entries.length} item{entries.length === 1 ? "" : "s"}
             </span>
           )}
         </span>
-        <span className="text-plum-400">{expanded ? "▲" : "▼"}</span>
+        <span className="text-ink-400">{expanded ? "▲" : "▼"}</span>
       </button>
 
       {expanded && (
-        <div className="px-4 pb-4 space-y-3 border-t border-plum-50 pt-3">
+        <div className="px-4 pb-4 space-y-3 border-t border-ink-600 pt-3">
           {entries && entries.length > 0 && (
             <div className="space-y-2">
               {entries.map((e) => (
                 <div
                   key={e.id}
-                  className="flex items-center justify-between bg-plum-50/50 rounded-xl px-3 py-2"
+                  className="flex items-center justify-between bg-ink-700/50 rounded-xl px-3 py-2"
                 >
-                  <span className="text-sm text-plum-700">{describe(e)}</span>
+                  <span className="text-sm text-ink-100">{describe(e)}</span>
                   <div className="flex items-center gap-3">
-                    <span className="text-sm font-semibold text-plum-800">
+                    <span className="text-sm font-semibold text-gold-500">
                       {currencySymbol}{Number(e.amount).toFixed(2)}
                     </span>
                     <button
                       onClick={() => deleteOutgoing.mutate(e.id)}
-                      className="min-w-[32px] min-h-[32px] flex items-center justify-center text-plum-300"
+                      className="min-w-[32px] min-h-[32px] flex items-center justify-center text-ink-300"
                       aria-label={`Remove ${describe(e)}`}
                     >
                       ✕
@@ -95,7 +95,7 @@ export default function SessionCostsCard({ classId, date }) {
                   onClick={() =>
                     addOutgoing.mutate({ category: s.category, label: s.label, amount: Number(s.amount) })
                   }
-                  className="min-h-[36px] px-3 rounded-full bg-marigold-500/10 text-plum-700 text-xs font-medium border border-marigold-500/30"
+                  className="min-h-[36px] px-3 rounded-full bg-gold-500/10 text-ink-100 text-xs font-medium border border-gold-500/30"
                 >
                   + {describe(s)} {currencySymbol}{Number(s.amount).toFixed(2)}
                 </button>
@@ -113,7 +113,7 @@ export default function SessionCostsCard({ classId, date }) {
           ) : (
             <button
               onClick={() => setAddingForm(true)}
-              className="w-full min-h-[40px] rounded-xl border border-dashed border-plum-200 text-plum-500 text-sm font-medium"
+              className="w-full min-h-[40px] rounded-xl border border-dashed border-ink-600 text-ink-400 text-sm font-medium"
             >
               + Add cost
             </button>
@@ -141,11 +141,11 @@ function AddOutgoingForm({ onSave, onCancel, saving, currencySymbol }) {
   }
 
   return (
-    <form onSubmit={submit} className="bg-plum-50/50 rounded-xl p-3 space-y-2">
+    <form onSubmit={submit} className="bg-ink-700/50 rounded-xl p-3 space-y-2">
       <select
         value={category}
         onChange={(e) => setCategory(e.target.value)}
-        className="w-full min-h-[40px] rounded-lg border border-plum-100 px-3 bg-white text-sm"
+        className="w-full min-h-[40px] rounded-lg border border-ink-600 px-3 bg-ink-900 text-ink-100 text-sm"
       >
         {Object.entries(CATEGORY_LABELS).map(([value, label]) => (
           <option key={value} value={value}>
@@ -158,7 +158,7 @@ function AddOutgoingForm({ onSave, onCancel, saving, currencySymbol }) {
         placeholder="Name / note (optional)"
         value={label}
         onChange={(e) => setLabel(e.target.value)}
-        className="w-full min-h-[40px] rounded-lg border border-plum-100 px-3 bg-white text-sm"
+        className="w-full min-h-[40px] rounded-lg border border-ink-600 px-3 bg-ink-900 text-ink-100 text-sm"
       />
       <input
         type="number"
@@ -166,21 +166,21 @@ function AddOutgoingForm({ onSave, onCancel, saving, currencySymbol }) {
         placeholder={`Amount ${currencySymbol}`}
         value={amount}
         onChange={(e) => setAmount(e.target.value)}
-        className="w-full min-h-[40px] rounded-lg border border-plum-100 px-3 bg-white text-sm"
+        className="w-full min-h-[40px] rounded-lg border border-ink-600 px-3 bg-ink-900 text-ink-100 text-sm"
       />
-      {error && <p className="text-coral-600 text-xs">{error}</p>}
+      {error && <p className="text-danger-500 text-xs">{error}</p>}
       <div className="flex gap-2">
         <button
           type="submit"
           disabled={saving}
-          className="flex-1 min-h-[40px] rounded-lg bg-plum-800 text-white text-sm font-medium"
+          className="flex-1 min-h-[40px] rounded-lg bg-emerald-500 text-ink-950 text-sm font-medium"
         >
           Add
         </button>
         <button
           type="button"
           onClick={onCancel}
-          className="flex-1 min-h-[40px] rounded-lg bg-white border border-plum-100 text-plum-700 text-sm font-medium"
+          className="flex-1 min-h-[40px] rounded-lg bg-ink-900 border border-ink-600 text-ink-100 text-sm font-medium"
         >
           Cancel
         </button>

@@ -18,20 +18,20 @@ export default function ClassForm({ initial, onSave, onCancel, saving }) {
   }
 
   return (
-    <form onSubmit={submit} className="bg-plum-50/60 rounded-2xl p-4 space-y-3">
+    <form onSubmit={submit} className="bg-ink-700/60 rounded-2xl p-4 space-y-3">
       <input
         type="text"
         placeholder="Class name (e.g. Juniors Level 1 Kuchipudi)"
         value={name}
         onChange={(e) => setName(e.target.value)}
-        className="w-full min-h-[44px] rounded-xl border border-plum-100 px-3 bg-white"
+        className="w-full min-h-[44px] rounded-xl border border-ink-600 px-3 bg-ink-900 text-ink-100"
         autoFocus
       />
       <div className="flex gap-3">
         <select
           value={day}
           onChange={(e) => setDay(e.target.value)}
-          className="flex-1 min-h-[44px] rounded-xl border border-plum-100 px-3 bg-white"
+          className="flex-1 min-h-[44px] rounded-xl border border-ink-600 px-3 bg-ink-900 text-ink-100"
         >
           {DAYS.map((d) => (
             <option key={d} value={d}>
@@ -43,22 +43,22 @@ export default function ClassForm({ initial, onSave, onCancel, saving }) {
           type="time"
           value={time}
           onChange={(e) => setTime(e.target.value)}
-          className="flex-1 min-h-[44px] rounded-xl border border-plum-100 px-3 bg-white"
+          className="flex-1 min-h-[44px] rounded-xl border border-ink-600 px-3 bg-ink-900 text-ink-100"
         />
       </div>
-      {error && <p className="text-coral-600 text-sm">{error}</p>}
+      {error && <p className="text-danger-500 text-sm">{error}</p>}
       <div className="flex gap-2">
         <button
           type="submit"
           disabled={saving}
-          className="flex-1 min-h-[44px] rounded-xl bg-plum-800 text-white font-medium"
+          className="flex-1 min-h-[44px] rounded-xl bg-emerald-500 text-ink-950 font-medium"
         >
           Save class
         </button>
         <button
           type="button"
           onClick={onCancel}
-          className="flex-1 min-h-[44px] rounded-xl bg-white border border-plum-100 text-plum-700 font-medium"
+          className="flex-1 min-h-[44px] rounded-xl bg-ink-900 border border-ink-600 text-ink-100 font-medium"
         >
           Cancel
         </button>

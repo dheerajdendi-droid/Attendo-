@@ -41,7 +41,7 @@ export default function Students() {
   const unassigned = studentsByClass.get("unassigned") || [];
 
   if (classesLoading || studentsLoading) {
-    return <p className="p-4 text-plum-400">Loading roster…</p>;
+    return <p className="p-4 text-ink-400">Loading roster…</p>;
   }
 
   return (
@@ -54,7 +54,7 @@ export default function Students() {
         {!addingClass && (
           <button
             onClick={() => setAddingClass(true)}
-            className="min-h-[40px] px-3 rounded-xl bg-plum-800 text-white text-sm font-medium"
+            className="min-h-[40px] px-3 rounded-xl bg-emerald-500 text-ink-950 text-sm font-medium"
           >
             + Add class
           </button>
@@ -83,22 +83,22 @@ export default function Students() {
       </div>
 
       {classes.length === 0 && !addingClass && (
-        <p className="mx-4 text-plum-400 text-sm">No classes yet — add your first one above.</p>
+        <p className="mx-4 text-ink-400 text-sm">No classes yet — add your first one above.</p>
       )}
 
       <div className="mx-4 mt-6">
         <h2 className="font-display text-lg font-semibold mb-2">Unassigned students</h2>
-        <div className="bg-white rounded-2xl shadow-sm p-3 space-y-2">
+        <div className="bg-ink-800 rounded-2xl shadow-sm p-3 space-y-2">
           {unassigned.map((s) => (
             <button
               key={s.id}
               onClick={() => setOpenStudentId(s.id)}
-              className="w-full flex items-center gap-3 p-2 rounded-xl hover:bg-plum-50/60 text-left"
+              className="w-full flex items-center gap-3 p-2 rounded-xl hover:bg-ink-700/60 text-left"
             >
               <Avatar name={s.name} />
               <div className="flex-1 min-w-0">
                 <p className="font-medium truncate">{s.name}</p>
-                <p className="text-xs text-plum-400">
+                <p className="text-xs text-ink-400">
                   {s.tier_name} · {currencySymbol}{Number(s.rate).toFixed(2)}
                 </p>
               </div>
@@ -107,7 +107,7 @@ export default function Students() {
                   e.stopPropagation();
                   if (confirm(`Remove ${s.name}?`)) deleteStudent.mutate(s.id);
                 }}
-                className="min-w-[36px] min-h-[36px] flex items-center justify-center text-plum-300 text-lg"
+                className="min-w-[36px] min-h-[36px] flex items-center justify-center text-ink-300 text-lg"
                 role="button"
                 aria-label={`Remove ${s.name}`}
               >
@@ -116,7 +116,7 @@ export default function Students() {
             </button>
           ))}
           {unassigned.length === 0 && !addingUnassigned && (
-            <p className="text-plum-400 text-sm px-2 py-1">No unassigned students.</p>
+            <p className="text-ink-400 text-sm px-2 py-1">No unassigned students.</p>
           )}
           {addingUnassigned ? (
             <StudentForm
@@ -132,7 +132,7 @@ export default function Students() {
           ) : (
             <button
               onClick={() => setAddingUnassigned(true)}
-              className="w-full min-h-[44px] rounded-xl border border-dashed border-plum-200 text-plum-500 font-medium"
+              className="w-full min-h-[44px] rounded-xl border border-dashed border-ink-600 text-ink-400 font-medium"
             >
               + Add student without a class
             </button>

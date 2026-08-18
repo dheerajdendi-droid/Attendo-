@@ -60,12 +60,12 @@ export default function Today() {
   }
 
   if (classesLoading || studentsLoading) {
-    return <p className="p-4 text-plum-400">Loading…</p>;
+    return <p className="p-4 text-ink-400">Loading…</p>;
   }
 
   if (!classes || classes.length === 0) {
     return (
-      <p className="p-4 text-plum-400">
+      <p className="p-4 text-ink-400">
         No classes yet — add one from the Students tab to start marking attendance.
       </p>
     );
@@ -74,7 +74,7 @@ export default function Today() {
   return (
     <div className="pb-6">
       {pendingSync > 0 && (
-        <div className="mx-4 mt-3 mb-1 bg-marigold-500/20 text-marigold-600 text-sm font-medium rounded-xl px-3 py-2">
+        <div className="mx-4 mt-3 mb-1 bg-gold-500/20 text-gold-500 text-sm font-medium rounded-xl px-3 py-2">
           {pendingSync} change{pendingSync === 1 ? "" : "s"} will sync when you're back online
         </div>
       )}
@@ -88,7 +88,7 @@ export default function Today() {
           type="date"
           value={date}
           onChange={(e) => setDate(e.target.value)}
-          className="min-h-[44px] rounded-xl border border-plum-100 px-3 bg-white"
+          className="min-h-[44px] rounded-xl border border-ink-600 px-3 bg-ink-900 text-ink-100"
         />
         <p className="font-display text-lg font-semibold">
           {presentSet.size}/{classStudents.length} present
@@ -98,13 +98,13 @@ export default function Today() {
       <div className="flex gap-2 px-4 mt-3">
         <button
           onClick={markAllPresent}
-          className="flex-1 min-h-[44px] rounded-xl bg-plum-800 text-white font-medium text-sm"
+          className="flex-1 min-h-[44px] rounded-xl bg-emerald-500 text-ink-950 font-medium text-sm"
         >
           Mark everyone here
         </button>
         <button
           onClick={clearAll}
-          className="flex-1 min-h-[44px] rounded-xl bg-white border border-plum-100 text-plum-700 font-medium text-sm"
+          className="flex-1 min-h-[44px] rounded-xl bg-ink-800 border border-ink-600 text-ink-100 font-medium text-sm"
         >
           Clear
         </button>
@@ -122,7 +122,7 @@ export default function Today() {
       </div>
 
       {classStudents.length === 0 && (
-        <p className="px-4 mt-4 text-plum-400 text-sm">
+        <p className="px-4 mt-4 text-ink-400 text-sm">
           No students in this class yet — add them from the Students tab.
         </p>
       )}

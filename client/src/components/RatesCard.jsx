@@ -88,14 +88,14 @@ export default function RatesCard() {
   if (settingsLoading || tiersLoading) return null;
 
   return (
-    <div className="mx-4 mt-4 bg-white rounded-2xl shadow-sm p-4">
+    <div className="mx-4 mt-4 bg-ink-800 rounded-2xl shadow-sm p-4">
       {!editing ? (
         <div className="flex items-center justify-between">
           <div className="flex flex-wrap gap-6">
             {tiers.map((t) => (
               <div key={t.id}>
-                <p className="text-xs text-plum-400 uppercase tracking-wide">{t.name}</p>
-                <p className="font-display text-xl font-semibold">
+                <p className="text-xs text-ink-400 uppercase tracking-wide">{t.name}</p>
+                <p className="font-display text-xl font-semibold text-gold-500">
                   {currencySymbol}{Number(t.rate).toFixed(2)}
                 </p>
               </div>
@@ -103,7 +103,7 @@ export default function RatesCard() {
           </div>
           <button
             onClick={startEdit}
-            className="min-h-[44px] px-4 rounded-xl bg-plum-50 text-plum-700 font-medium text-sm"
+            className="min-h-[44px] px-4 rounded-xl bg-ink-700 text-ink-100 font-medium text-sm"
           >
             Edit rates
           </button>
@@ -119,7 +119,7 @@ export default function RatesCard() {
                     type="text"
                     value={d.name}
                     onChange={(e) => updateDraft(d.key, "name", e.target.value)}
-                    className="mt-1 w-full min-h-[44px] rounded-xl border border-plum-100 px-3"
+                    className="mt-1 w-full min-h-[44px] rounded-xl border border-ink-600 bg-ink-900 text-ink-100 px-3"
                   />
                 </label>
                 <label className="w-28 text-sm">
@@ -129,13 +129,13 @@ export default function RatesCard() {
                     inputMode="decimal"
                     value={d.rate}
                     onChange={(e) => updateDraft(d.key, "rate", e.target.value)}
-                    className="mt-1 w-full min-h-[44px] rounded-xl border border-plum-100 px-3"
+                    className="mt-1 w-full min-h-[44px] rounded-xl border border-ink-600 bg-ink-900 text-ink-100 px-3"
                   />
                 </label>
                 <button
                   onClick={() => removeDraft(d)}
                   aria-label={`Remove ${d.name || "tier"}`}
-                  className="min-w-[44px] min-h-[44px] rounded-xl bg-plum-50 text-plum-400"
+                  className="min-w-[44px] min-h-[44px] rounded-xl bg-ink-700 text-ink-400"
                 >
                   ✕
                 </button>
@@ -145,24 +145,24 @@ export default function RatesCard() {
 
           <button
             onClick={addDraft}
-            className="w-full mt-3 min-h-[40px] rounded-xl border border-dashed border-plum-200 text-plum-500 text-sm font-medium"
+            className="w-full mt-3 min-h-[40px] rounded-xl border border-dashed border-ink-600 text-ink-400 text-sm font-medium"
           >
             + Add tier
           </button>
 
-          {error && <p className="text-coral-600 text-sm mt-2">{error}</p>}
+          {error && <p className="text-danger-500 text-sm mt-2">{error}</p>}
 
           <div className="flex gap-2 mt-3">
             <button
               onClick={save}
               disabled={saving}
-              className="flex-1 min-h-[44px] rounded-xl bg-plum-800 text-white font-medium"
+              className="flex-1 min-h-[44px] rounded-xl bg-emerald-500 text-ink-950 font-medium"
             >
               Save
             </button>
             <button
               onClick={() => setEditing(false)}
-              className="flex-1 min-h-[44px] rounded-xl bg-plum-50 text-plum-700 font-medium"
+              className="flex-1 min-h-[44px] rounded-xl bg-ink-700 text-ink-100 font-medium"
             >
               Cancel
             </button>

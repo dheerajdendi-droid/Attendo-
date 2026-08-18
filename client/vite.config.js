@@ -12,8 +12,8 @@ export default defineConfig({
         name: "Attendo",
         short_name: "Attendo",
         description: "Attendance & invoicing for coaches and instructors",
-        theme_color: "#3D1F3E",
-        background_color: "#FBF6F0",
+        theme_color: "#0D0D0D",
+        background_color: "#0D0D0D",
         display: "standalone",
         start_url: "/",
         icons: [

@@ -16,8 +16,8 @@ export default function PinPad({ value, maxLength, onChange, disabled }) {
         {Array.from({ length: maxLength }).map((_, i) => (
           <span
             key={i}
-            className={`w-4 h-4 rounded-full border-2 border-marigold-400 transition-colors ${
-              i < value.length ? "bg-marigold-400" : "bg-transparent"
+            className={`w-4 h-4 rounded-full border-2 border-gold-500 transition-colors ${
+              i < value.length ? "bg-gold-500" : "bg-transparent"
             }`}
           />
         ))}
@@ -32,7 +32,7 @@ export default function PinPad({ value, maxLength, onChange, disabled }) {
               type="button"
               disabled={disabled}
               onClick={() => press(key)}
-              className="min-h-[64px] rounded-2xl bg-plum-700/60 active:bg-plum-600 text-cream-50 text-2xl font-medium flex items-center justify-center select-none disabled:opacity-50"
+              className="min-h-[64px] rounded-2xl bg-ink-700/60 active:bg-ink-600 text-ink-100 text-2xl font-medium flex items-center justify-center select-none disabled:opacity-50"
             >
               {key === "back" ? "⌫" : key}
             </button>

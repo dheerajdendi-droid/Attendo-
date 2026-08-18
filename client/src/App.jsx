@@ -25,7 +25,7 @@ export default function App() {
   const { data, isLoading } = useAuthStatus();
 
   if (isLoading) {
-    return <div className="min-h-screen bg-plum-900" />;
+    return <div className="min-h-screen bg-ink-900" />;
   }
 
   if (!data || !data.authenticated) {
@@ -36,7 +36,7 @@ export default function App() {
     <div className="min-h-screen flex flex-col">
       <Header title={title} />
       <main className="flex-1 pb-20">
-        <Suspense fallback={<p className="p-4 text-plum-400">Loading…</p>}>
+        <Suspense fallback={<p className="p-4 text-ink-400">Loading…</p>}>
           <Routes>
             <Route path="/" element={<Today />} />
             <Route path="/students" element={<Students />} />
