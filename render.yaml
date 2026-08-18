@@ -1,0 +1,37 @@
+databases:
+  - name: attendo-db
+    plan: free
+    databaseName: attendo
+    user: attendo
+
+services:
+  - type: web
+    name: attendo
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm run migrate && npm start
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: attendo-db
+          property: connectionString
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: NODE_ENV
+        value: production
+      - key: OWNER_EMAIL
+        sync: false
+      - key: GOOGLE_CLIENT_ID
+        sync: false
+      - key: FACEBOOK_APP_ID
+        sync: false
+      - key: FACEBOOK_APP_SECRET
+        sync: false
+      # Same values as GOOGLE_CLIENT_ID / FACEBOOK_APP_ID above — Vite needs
+      # its own VITE_-prefixed copies present at build time to inline them
+      # into the client bundle.
+      - key: VITE_GOOGLE_CLIENT_ID
+        sync: false
+      - key: VITE_FACEBOOK_APP_ID
+        sync: false
